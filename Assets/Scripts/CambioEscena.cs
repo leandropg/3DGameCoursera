@@ -12,8 +12,8 @@ public class CambioEscena : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (nombreEscena == null) {
-			Debug.Log ("CambioEscena. No se ha asignado una escena destino. Suponiendo pfiguero");
-			nombreEscena = "room-pfiguero";
+			Debug.Log ("CambioEscena. No se ha asignado una escena destino. Suponiendo lperez");
+			nombreEscena = "room-lperez";
 		}
 	}
 	
