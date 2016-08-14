@@ -19,8 +19,19 @@ public class ControlHydrant : MonoBehaviour {
      * Start Method
      */
     void Start () {
-	
-	}
+
+        GameObject water;
+        ParticleSystem particleSystem;
+
+        // Get Hydrant Water
+        water = GameObject.Find("Water");
+
+        // Get Particle System
+        particleSystem = water.GetComponent<ParticleSystem>();
+
+        // Stop Animation
+        particleSystem.Stop();
+    }
 	
 	/**
      * Update Method
@@ -34,17 +45,17 @@ public class ControlHydrant : MonoBehaviour {
      */
     void OnTriggerEnter(Collider collider)
     {
-        GameObject hydrantWater;
+        GameObject water;
         ParticleSystem particleSystem;
 
         // Check if Ethan Collision
         if (collider.gameObject.name.Contains("Bus"))
         {
             // Get Hydrant Water
-            hydrantWater = GameObject.Find("HydrantWater");
+            water = GameObject.Find("Water");
 
             // Get Particle System
-            particleSystem = hydrantWater.GetComponentInChildren<ParticleSystem>();
+            particleSystem = water.GetComponent<ParticleSystem>();
 
             // Play Animation
             particleSystem.Play();
