@@ -40,6 +40,16 @@ public class BallLauncher : MonoBehaviour {
      */
     private bool isStarted = false;
 
+    /**
+     * Audio Launch Ball
+     */
+    public AudioClip audioLaunchBall;
+
+    /**
+     * AudioSource Instance
+     */
+    private AudioSource audioSource;
+
     /*
      * Start Method
      */
@@ -47,6 +57,9 @@ public class BallLauncher : MonoBehaviour {
 
         GameObject startLigth;
         Light ligth;
+
+        // Get Instances
+        audioSource = GetComponent<AudioSource>();
 
         // Get Start Light
         startLigth = GameObject.Find("Start Light");
@@ -123,5 +136,8 @@ public class BallLauncher : MonoBehaviour {
 
         // Apply Force to Ball
         rgb.AddRelativeForce(new Vector3(forceX, forceY, forceZ), ForceMode.Impulse);
+
+        // Execute Audio
+        audioSource.PlayOneShot(audioLaunchBall);
     }
 }

@@ -6,6 +6,16 @@
 public class ControlHydrant : MonoBehaviour {
 
     /**
+     * Audio Water
+     */
+    public AudioClip audioWater;
+
+    /**
+     * AudioSource Instance
+     */
+    private AudioSource audioSource;
+
+    /**
      * Delegate Open Water
      */
     public delegate void OpenWater();
@@ -22,6 +32,9 @@ public class ControlHydrant : MonoBehaviour {
 
         GameObject water;
         ParticleSystem particleSystem;
+
+        // Get Instances
+        audioSource = GetComponent<AudioSource>();
 
         // Get Hydrant Water
         water = GameObject.Find("Water");
@@ -59,6 +72,9 @@ public class ControlHydrant : MonoBehaviour {
 
             // Play Animation
             particleSystem.Play();
+
+            // Execute Audio
+            audioSource.PlayOneShot(audioWater);
 
             // Check if Event not is null
             if (OnOpenWater != null) {

@@ -6,13 +6,18 @@
 public class ControlPostBox : MonoBehaviour {
 
     /**
-     * Animator Instance
+     * Audio Switch Light
      */
-    private Animator anim;
+    public AudioClip audioSwitchLight;
+
+    /**
+     * AudioSource Instance
+     */
+    private AudioSource audioSource;
 
     /**
      * Delegate Start Machine
-     */ 
+     */
     public delegate void StartMachine();
 
     /**
@@ -26,7 +31,7 @@ public class ControlPostBox : MonoBehaviour {
     void Start () {
 
         // Get Instances
-        anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     /**
@@ -42,10 +47,13 @@ public class ControlPostBox : MonoBehaviour {
     void OnTriggerEnter(Collider collider) {
 
         // Check if Ethan Collision
-        if (collider.gameObject.name.Contains("Ethan")) {
+        if (collider.gameObject.name.Equals("Ethan")) {
+
+            // Execute Audio
+            audioSource.PlayOneShot(audioSwitchLight);
 
             // Check if Event not is null
-            if(OnStartMachine != null) {
+            if (OnStartMachine != null) {
 
                 OnStartMachine();
             }
