@@ -1,9 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Analytics;
 
 /**
  * Ball Launcher
  */
 public class BallLauncher : MonoBehaviour {
+
+    /**
+     * Ball Counter
+     */
+    public int ballCounter;
 
     /**
      * Ball Prefab
@@ -65,6 +72,16 @@ public class BallLauncher : MonoBehaviour {
         startLigth = GameObject.Find("Start Light");
         ligth = startLigth.GetComponentInChildren<Light>();
         ligth.enabled = false;
+
+        // Register Analytics Custom Event
+        Analytics.CustomEvent("startMachine", new Dictionary<string, object>
+        {
+            { "timeStartMachine", Time.time },
+            { "ballCounter", ballCounter }
+        });
+
+        // Init Counter
+        ballCounter = 0;
     }
 	
 	/**
@@ -139,5 +156,8 @@ public class BallLauncher : MonoBehaviour {
 
         // Execute Audio
         audioSource.PlayOneShot(audioLaunchBall);
+
+        // Increment Counter
+        ballCounter++;
     }
 }

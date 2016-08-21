@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Analytics;
 
 /**
  * Control Hydrant
- */ 
+ */
 public class ControlHydrant : MonoBehaviour {
 
     /**
@@ -58,6 +60,7 @@ public class ControlHydrant : MonoBehaviour {
      */
     void OnTriggerEnter(Collider collider)
     {
+        BallLauncher ballLauncher;
         GameObject water;
         ParticleSystem particleSystem;
 
@@ -76,9 +79,20 @@ public class ControlHydrant : MonoBehaviour {
             // Execute Audio
             audioSource.PlayOneShot(audioWater);
 
+            // Get Ball Launcher Object
+            ballLauncher = GameObject.Find("Ball Launcher").GetComponent<BallLauncher>();
+
+            // Register Analytics Custom Event
+            Analytics.CustomEvent("stopMachine", new Dictionary<string, object>
+            {
+                { "timeStopMachine", Time.time },
+                { "ballCounter", ballLauncher.ballCounter }
+            });
+
             // Check if Event not is null
             if (OnOpenWater != null) {
 
+                // Open Water
                 OnOpenWater();
             }
         }

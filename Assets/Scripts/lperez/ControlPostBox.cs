@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Analytics;
 
 /**
  * Control Post Box
@@ -32,6 +34,13 @@ public class ControlPostBox : MonoBehaviour {
 
         // Get Instances
         audioSource = GetComponent<AudioSource>();
+
+        // Register Analytics Custom Event
+        Analytics.CustomEvent("gameStart", new Dictionary<string, object>
+        {
+            { "startTime", Time.time }
+        });
+
     }
 
     /**

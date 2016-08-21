@@ -464,12 +464,12 @@ PlayerSettings:
   - WebGL::emscriptenArgs
   - WebGL::template
   - additionalIl2CppArgs::additionalIl2CppArgs
-  Build_ServiceEnabled::Build_ServiceEnabled: True
+  Build_ServiceEnabled::Build_ServiceEnabled: False
   UNet_ServiceEnabled::UNet_ServiceEnabled: True
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
-  cloudProjectId: 2f84f4a3-e25c-4984-9543-8cbeb3e708d9
-  projectName: 3DGameCoursera
-  organizationId: pfiguero
+  cloudProjectId: 82d09243-6536-455c-8022-c324c323bda7
+  projectName: Maquina Goldberg
+  organizationId: leandropg
   cloudEnabled: 0
